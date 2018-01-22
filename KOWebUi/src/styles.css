@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+html, body, .container-fluid, #container {
+    height: 100%;
+}
+
+body {
+    background: #eeeeee;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: bold;
+    letter-spacing: 0.075em;
+    font-size: 14px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.btn {
+    width: 100%;
+    background: #46b395;
+    text-align: center;
+    border: none;
+    border-radius: 0;
+    color: #2d353d;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 8px 0;
+}

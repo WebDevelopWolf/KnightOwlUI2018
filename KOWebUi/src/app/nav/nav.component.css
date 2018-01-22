@@ -1,0 +1,26 @@
+#nav {
+    width: 70px;
+    background: #2d353d url('../../assets/ko-small.png') no-repeat center 98%;
+    text-align: center;
+    padding: 35px 0;
+    height: 100%;
+}
+
+nav a {
+    display: block;
+}
+
+nav a i {
+    color: #a5afc0;
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+nav a i:hover {
+    color: #46b395;
+    cursor: pointer;
+}
+
+.active i {
+    color: #46b395 !important;
+}
