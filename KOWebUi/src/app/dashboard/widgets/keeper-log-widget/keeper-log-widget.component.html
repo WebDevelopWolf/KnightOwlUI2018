@@ -1,0 +1,9 @@
+<p>Keeper Log</p>
+<div *ngFor="let log of todaysLog" class="keeper-log">
+  <div class="keeper-log-inner">
+      <img [src]="log.animalImage" /><span>{{log.Animal}} &middot; {{log.LogTime}}</span><br/>
+      {{log.Message}}
+  </div>
+  {{log.User}}
+</div>
+<button class="btn">See More Keeper Logs...</button>

@@ -3,9 +3,12 @@
   <p>{{subNavDescription}}</p>
   <p>{{subNavInstruction}}</p>
   <ul>
-    <a href="#"><li>Liane's Dashboard # 1</li></a>
-    <a href="#"><li>Liane's Dashboard # 2</li></a>
-    <a href="#"><li>Add a New Dashboard</li></a>
+    <ng-container *ngIf="routeString == 'dashboard'" >
+    <a *ngFor="let dash of dashboards" [routerLink]="['/dashboard', dash.DashViewOrder]">
+      <li>{{dash.DashName}}</li>
+    </a>
+    </ng-container>
+    <a *ngFor="let submodule of submodules" [routerLink]=submodule.RouterLink><li>{{submodule.SubModuleTitle}}</li></a>
   </ul>
   <div class="user">
     <img src="../assets/users/liane.png" />

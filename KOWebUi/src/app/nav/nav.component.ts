@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { KoapiService } from '../koapi.service';
+import { Http } from "@angular/http";
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  modules: any;
 
-  ngOnInit() {
+  constructor(private _koapi: KoapiService) { }
+
+  ngOnInit() {  
+    // Inisitalise Knight Owl Navigation
+    this.getEnabledModules();
+  }
+
+  // Get Enabled Modules 
+  getEnabledModules() {
+    this._koapi
+    .getService("Modules/Get")
+    .then((result) => {
+      this.modules = result; 
+    })
+    .catch(error => console.log(error));
   }
 
 }

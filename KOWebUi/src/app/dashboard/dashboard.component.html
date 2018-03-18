@@ -1,5 +1,5 @@
-<h1>Liane's Dashboard #1</h1>
-  <div id="welcome" class="row">
+<h1>{{dashTitle}}</h1>
+  <div id="welcome" class="row" *ngIf=showWelcome>
     <div id="welcome-left" class="col-md-5">
       <p>Welcome Liane</p>
       <p>You have 5 messages and 5 notifications</p>
@@ -8,91 +8,21 @@
       <div class="row">
           <div id="events-one" class="col text-center events">
             <img src="assets/dashboard/events/mammal-events.png" /><br />
-            1 <br /> Zoo Keeper
+            {{zkEventCount}} <br /> Zoo Keeper
           </div>
           <div id="events-two" class="col text-center events">
             <img src="assets/dashboard/events/bird-events.png" /><br />
-            10 <br /> Bird of Prey
+            {{bopEventCount}} <br /> Bird of Prey
           </div>
           <div id="events-three" class="col text-center events">
             <img src="assets/dashboard/events/reptile-events.png" /><br />
-            1 <br /> Other Event
+            {{otherEventCount}} <br /> Other Event
           </div>
       </div>
     </div>
   </div>
-  <div id="widgets" class="row">
-    <div class="col widget">
-      <p>A litte birdy told me...</p>
-      <div class="tweet">
-        <div class="tweet-inner">
-          <a>@mention</a> Hey, here’s a cool, happening tweet with an even more awesome mention in it!
-        </div>
-        1 min ago
-      </div>
-      <div class="tweet">
-        <div class="tweet-inner">
-          <a>@mention</a> Hey, here’s a cool, happening tweet with an even more awesome mention in it!
-        </div>
-        1 min ago
-      </div>
-      <div class="tweet">
-        <div class="tweet-inner">
-          <a>@mention</a> Hey, here’s a cool, happening tweet with an even more awesome mention in it!
-        </div>
-        1 min ago
-      </div>
-      <div class="tweet">
-        <div class="tweet-inner">
-          <a>@mention</a> Hey, here’s a cool, happening tweet with an even more awesome mention in it!
-        </div>
-        1 min ago
-      </div>
-    </div>
-    <div class="col widget">
-      <p>To-do List</p>
-      <span class="widget-instructions">Drag to Re-order</span>
-      <input id="todo-add" placeholder="To add items, write a title and hit enter..." />
-      <div class="todo-item high">
-        Simple to-do name<br/>
-        <span>21.01.18</span>
-      </div>
-      <div class="todo-item medium">
-        Simple to-do name<br/>
-        <span>21.01.18</span>
-      </div>
-      <div class="todo-item low">
-        Simple to-do name<br/>
-        <span>21.01.18</span>
-      </div>
-      <div class="todo-item high">
-        Simple to-do name<br/>
-        <span>21.01.18</span>
-      </div>
-    </div>
-    <div class="col widget">
-      <p>Keeper Log</p>
-      <div class="keeper-log">
-        <div class="keeper-log-inner">
-            <img src="assets/dashboard/widgets/keeperlog/frost.png" /><span>Frost &middot; 14:05</span><br/>
-            Moss growing on braches in enclosure, will need a more through clean
-        </div>
-        Klair W.
-      </div>
-      <div class="keeper-log">
-        <div class="keeper-log-inner">
-            <img src="assets/dashboard/widgets/keeperlog/frost.png" /><span>Frost &middot; 14:05</span><br/>
-            Moss growing on braches in enclosure, will need a more through clean
-        </div>
-        Klair W.
-      </div>
-      <div class="keeper-log">
-        <div class="keeper-log-inner">
-            <img src="assets/dashboard/widgets/keeperlog/frost.png" /><span>Frost &middot; 14:05</span><br/>
-            Moss growing on braches in enclosure, will need a more through clean
-        </div>
-        Klair W.
-      </div>
-      <button class="btn">See More Keeper Logs...</button>
-    </div>
+  <div id="widgets" class="row" *ngIf=showWidgets>
+    <app-social-widget *ngIf="showSocialWidget"></app-social-widget>
+    <app-todo-widget *ngIf="showTodoWidget"></app-todo-widget>
+    <app-keeper-log-widget *ngIf="showKeeperLogWidget"></app-keeper-log-widget>
   </div>

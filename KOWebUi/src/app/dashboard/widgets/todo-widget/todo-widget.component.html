@@ -1,0 +1,7 @@
+<p>To-do List</p>
+<span class="widget-instructions">Drag to Re-order</span>
+<input id="todo-add" placeholder="To add items, write a title and hit enter..." />
+<div *ngFor="let todo of todos" class="todo-item" [ngClass]="todo.Priority">
+  {{todo.ToDoTitle}}<br/>
+  <span>{{todo.ToDoDate}}</span>
+</div>

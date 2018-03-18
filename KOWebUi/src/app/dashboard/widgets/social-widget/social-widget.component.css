@@ -1,0 +1,27 @@
+:host {
+    height: 375px;
+    background: #2d353d;
+    border-top: 5px solid #46b395;
+    margin: 10px;
+    padding: 12px;
+    flex-basis: 0;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+:host p {
+    color: #46b395;
+    font-size: 16px;
+}
+
+.widget-instructions {
+    font-size: 12px;
+}
+
