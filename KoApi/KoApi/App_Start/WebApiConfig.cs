@@ -24,7 +24,7 @@ namespace KoApi
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            // Enable CORS for Localhost 
+            // Enable CORS for Localhost - Remove on release
             var cors = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors(cors);
         }

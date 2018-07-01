@@ -94,10 +94,11 @@ D:\GitKracken\KnightOwlUI2018\KoApi\KoApi\bin\Microsoft.AI.DependencyCollector.x
 D:\GitKracken\KnightOwlUI2018\KoApi\KoApi\bin\Microsoft.AI.ServerTelemetryChannel.xml
 D:\GitKracken\KnightOwlUI2018\KoApi\KoApi\bin\Microsoft.AI.WindowsServer.xml
 D:\GitKracken\KnightOwlUI2018\KoApi\KoApi\bin\Microsoft.AI.Web.xml
-D:\GitKracken\KnightOwlUI2018\KoApi\KoApi\obj\Debug\KoApi.csprojResolveAssemblyReference.cache
 D:\GitKracken\KnightOwlUI2018\KoApi\KoApi\obj\Debug\KoApi.csproj.CoreCompileInputs.cache
 D:\GitKracken\KnightOwlUI2018\KoApi\KoApi\obj\Debug\KoApi.dll
 D:\GitKracken\KnightOwlUI2018\KoApi\KoApi\obj\Debug\KoApi.pdb
 D:\GitKracken\KnightOwlUI2018\KoApi\KoApi\bin\System.Web.Cors.dll
 D:\GitKracken\KnightOwlUI2018\KoApi\KoApi\bin\System.Web.Http.Cors.dll
 D:\GitKracken\KnightOwlUI2018\KoApi\KoApi\bin\System.Web.Http.Cors.xml
+D:\GitKracken\KnightOwlUI2018\KoApi\KoApi\obj\Debug\KoApi.csprojAssemblyReference.cache
+D:\GitKracken\KnightOwlUI2018\KoApi\KoApi\obj\Debug\KoApi.csproj.CopyComplete

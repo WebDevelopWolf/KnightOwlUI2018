@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterModule, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { KoapiService } from '../koapi.service';
 import { Http } from "@angular/http";
 
@@ -20,19 +20,26 @@ export class SubNavComponent implements OnInit {
 
   ngOnInit() {
     // If we're on the root, force this get the dashboard information, if not use the router url
-    if (this.router.url === '/') {
-      this.routeString = "dashboard";
-    } else {
-      this.routeString = this.router.url;
-    }
-    // Run the KO service to get the header object
-    this.getHeader(this.routeString);  
-    // Run the KO Service to get the Sub-Modules
-    this.getSubModules(this.routeString);
-    // TODO: Run the KO Service to get the user's dashboards (if on root or dashboard)
-    if (this.routeString == 'dashboard') {
-      this.getUserDashboards();
-    }
+    this.router.events.subscribe(events => {
+      if (events instanceof NavigationEnd) {
+        var splitUrl = events.url.split("/");
+        if (splitUrl[1] === '') {
+          this.routeString = "dashboard";
+        } else {
+          this.routeString = splitUrl[1];
+        }
+        console.log(this.routeString);
+        // Run the KO service to get the header object
+        this.getHeader(this.routeString);  
+        // Run the KO Service to get the Sub-Modules
+        this.getSubModules(this.routeString);
+        // TODO: Run the KO Service to get the user's dashboards (if on root or dashboard)
+        if (this.routeString == 'dashboard') {
+          this.getUserDashboards();
+        }
+      }
+    })
+
     // TODO: Run the KO Service to get the current user details  
   }
 

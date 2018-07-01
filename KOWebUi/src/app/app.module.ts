@@ -11,6 +11,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SocialWidgetComponent } from './dashboard/widgets/social-widget/social-widget.component';
 import { TodoWidgetComponent } from './dashboard/widgets/todo-widget/todo-widget.component';
 import { KeeperLogWidgetComponent } from './dashboard/widgets/keeper-log-widget/keeper-log-widget.component';
+import { InboxComponent } from './messages/inbox/inbox.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { KeeperLogWidgetComponent } from './dashboard/widgets/keeper-log-widget/
     DashboardComponent,
     SocialWidgetComponent,
     TodoWidgetComponent,
-    KeeperLogWidgetComponent
+    KeeperLogWidgetComponent,
+    InboxComponent
   ],
   imports: [
     BrowserModule,
