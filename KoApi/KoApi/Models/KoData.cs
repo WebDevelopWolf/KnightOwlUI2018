@@ -231,7 +231,7 @@ namespace KoApi.Models
             ConversationMessages = new FakeDbSet<ConversationMessage>("ConversationMessageId");
             Dashboards = new FakeDbSet<Dashboard>("DashId");
             Events = new FakeDbSet<Event>("EventId");
-            GetConversations = new FakeDbSet<GetConversation>("MessageBody");
+            GetConversations = new FakeDbSet<GetConversation>("MessageBody", "ConversationId");
             GetUserConversations = new FakeDbSet<GetUserConversation>("ConversationId");
             KeeperLogs = new FakeDbSet<KeeperLog>("KeeperLogId");
             Modules = new FakeDbSet<Module>("ModuleId");
@@ -629,6 +629,7 @@ namespace KoApi.Models
         public string Sender { get; set; } // Sender (length: 50)
         public string Recipient { get; set; } // Recipient (length: 50)
         public string MessageBody { get; set; } // MessageBody (Primary key)
+        public System.Guid ConversationId { get; set; } // ConversationId (Primary key)
     }
 
     // GetUserConversations
@@ -900,12 +901,13 @@ namespace KoApi.Models
         public GetConversationConfiguration(string schema)
         {
             ToTable("GetConversation", schema);
-            HasKey(x => x.MessageBody);
+            HasKey(x => new { x.MessageBody, x.ConversationId });
 
             Property(x => x.MessageTime).HasColumnName(@"MessageTime").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(5);
             Property(x => x.Sender).HasColumnName(@"Sender").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
             Property(x => x.Recipient).HasColumnName(@"Recipient").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
             Property(x => x.MessageBody).HasColumnName(@"MessageBody").HasColumnType("varchar(max)").IsRequired().IsUnicode(false).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.ConversationId).HasColumnName(@"ConversationId").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
         }
     }
 

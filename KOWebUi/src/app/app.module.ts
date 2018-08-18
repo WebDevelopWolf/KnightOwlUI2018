@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -12,6 +13,7 @@ import { SocialWidgetComponent } from './dashboard/widgets/social-widget/social-
 import { TodoWidgetComponent } from './dashboard/widgets/todo-widget/todo-widget.component';
 import { KeeperLogWidgetComponent } from './dashboard/widgets/keeper-log-widget/keeper-log-widget.component';
 import { InboxComponent } from './messages/inbox/inbox.component';
+import { ModalComponent } from './utilities/modal/modal.component';
 
 
 @NgModule({
@@ -23,12 +25,14 @@ import { InboxComponent } from './messages/inbox/inbox.component';
     SocialWidgetComponent,
     TodoWidgetComponent,
     KeeperLogWidgetComponent,
-    InboxComponent
+    InboxComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

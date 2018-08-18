@@ -1,133 +1,70 @@
 <div id="message-list">
-    <form>
-        <fieldset>
-            <input type="search" />
-            <button type="submit">
-                <i class="fa fa-search"></i>
-            </button>
-        </fieldset>
-    </form>
-    <div class="message-header selected">
-        <img src="../assets/users/64/lucius.png" class="user-small" />
-        <p class="message-header-user">Lucius S.</p>
-        <p class="message-header-body">Thanks for the help with tha...</p>
-        <p class="message-header-time">5 mins</p>
-    </div>
-    <div class="message-header">
-        <img src="../assets/users/64/saxon.png" class="user-small" />
-        <p class="message-header-user">Saxon W.</p>
-        <p class="message-header-body">Have you seen the new wolfdo...</p>
-        <p class="message-header-time">2 hours</p>
-    </div>
-    <div class="message-header">
-        <img src="../assets/users/64/jenny.png" class="user-small" />
-        <p class="message-header-user">Jenny M.</p>
-        <p class="message-header-body">Can you maybe come in and he...</p>
-        <p class="message-header-time">3 hours</p>
-    </div>
-    <div class="message-header">
-        <img src="../assets/users/64/wendy.png" class="user-small" />
-        <p class="message-header-user">Wendy K.</p>
-        <p class="message-header-body">You it's easier to do if you...</p>
-        <p class="message-header-time">22 hours</p>
-    </div>
-    <div class="message-header">
-        <img src="../assets/users/64/elsie.png" class="user-small" />
-        <p class="message-header-user">Elsie F.</p>
-        <p class="message-header-body">You're more than welcome</p>
-        <p class="message-header-time">3 days</p>
-    </div>
-    <div class="message-header">
-        <img src="../assets/users/64/bruce.png" class="user-small" />
-        <p class="message-header-user">Bruce W.</p>
-        <p class="message-header-body">Sorry I can't I'm busy most...</p>
-        <p class="message-header-time">5 days</p>
+    <button type="button" (click)="newMessage.show()">New Message</button>
+    <div *ngFor="let conversation of conversations" class="message-header" (ngClass)="selectedClass" (click)="changeSelectedConversation(conversation.FromUser)">
+        <img [src]="conversation.avatar" class="user-small" />
+        <p class="message-header-user">{{conversation.FromUser}}</p>
+        <p class="message-header-body">{{conversation.LastMessageBody}}</p>
+        <p class="message-header-time">{{conversation.LastMessageTime}}</p>
     </div>
 </div>
 
 <div id="message">
     <div id="message-body-header">
-        <img src="../assets/users/96/lucius.png" id="user-large" />
-        <p class="user">Lucius S.</p>
+        <img [src]="currentThreadAvatar" id="user-large" />
+        <p class="user">{{currentThreadSender}}</p>
     </div>
     <div id="message-body">
-        <div class="message-from">
-            <div class="user-from">
-                <img src="../assets/users/64/lucius.png" class="user-small" />
-                <p>14:31</p>
+        <div *ngFor="let msg of currentThread">
+            <div [ngClass]="msg.msgStyle">
+                <div [ngClass]="msg.userStyle">
+                    <img [src]="msg.avatar" class="user-small" />
+                    <p>{{msg.MessageTime}}</p>
+                </div>
+                <div [ngClass]="msg.msgBodyStyle">
+                    <p>{{msg.MessageBody}}</p>
+                </div>
             </div>
-            <div class="text-from">
-                <p>Hey, can you come and help me feed the snakes this afternoon, not 100% sure on how we feed these guys</p>
-            </div>
+            <div class="clear"></div>
         </div>
-        <div class="clear"></div>
-        <div class="message-from">
-            <div class="user-from">
-                <img src="../assets/users/64/lucius.png" class="user-small" />
-                <p>14:32</p>
-            </div>
-            <div class="text-from">
-                <p>Only if you're not busy of course</p>
-            </div>
-        </div>
-        <div class="clear"></div>
-        <div class="message-to">
-            <div class="user-to">
-                <img src="../assets/users/64/liane.png" class="user-small" />
-                <p>14:45</p>
-            </div>
-            <div class="text-to">
-                <p>Yeah sure, no problem! Meet you there!</p>
-            </div>
-        </div>
-        <div class="clear"></div>
-        <div class="message-from">
-            <div class="user-from">
-                <img src="../assets/users/64/lucius.png" class="user-small" />
-                <p>15:03</p>
-            </div>
-            <div class="text-from">
-                <p>Thanks for the help with that snake feeding, wow they looked hungry! what do u suppose a mouse tastes like?! To a snake I mean?! actually never mind I’d rather not think about it...thanks again!</p>
-            </div>
-        </div>
-        <div class="clear"></div>
-        <div class="message-to">
-            <div class="user-to">
-                <img src="../assets/users/64/liane.png" class="user-small" />
-                <p>14:45</p>
-            </div>
-            <div class="text-to">
-                <p>No problem! Just happy to help our little scaled friends.</p>
-            </div>
-        </div>
-        <div class="clear"></div>
-        <div class="message-from">
-            <div class="user-from">
-                <img src="../assets/users/64/lucius.png" class="user-small" />
-                <p>15:03</p>
-            </div>
-            <div class="text-from">
-                <p>I used to own a snake you know, he was a corn snake and I swear he thought he was a dog! He'd roll over when you rubbed his belly and he'd kiss you when he asked him to. The strangest thing was though, that he absolutely loved Coronation Street!</p>
-            </div>
-        </div>
-        <div class="clear"></div>
     </div>
     <div id="send-message">
-        <img src="../assets/users/64/liane.png" class="user-small" />
-        <input id="send-message-input" placeholder="Type your message here" />
-        <img src="../assets/messages/send.png" id="send" />
+        <img [src]="loggedInAvatar" class="user-small" />
+        <input id="send-message-input" placeholder="Type your message here" [(ngModel)]="message" />
+        <img src="../assets/messages/send.png" id="send" (click)="sendMessage()" />
     </div>
 </div>
 
 <div id="user">
-    <img src="../assets/users/256/lucius.png" class="user-large" />
-    <p id="user-heading">Lucius S.</p>
-    <p id="user-title">Zoo Keeper</p>
+    <img [src]="profileavatar" class="user-large" /> 
+    <p id="user-heading">{{miniprofile.Username}}</p>
+    <p id="user-title">{{miniprofile.JobTitle}}</p>
     <hr id="user-divider" />
-    <div><p class="info-left">Nickname:</p> <p class="info-right">Lu</p></div>
-    <div><p class="info-left">Birthday:</p> <p class="info-right">22 July</p></div>
-    <div><p class="info-left">Shifts:</p> <p class="info-right">Sat &amp; Sun</p></div>
-    <div><p class="info-left">Fav. Animal:</p> <p class="info-right">Snake</p></div>
-    <div><p class="info-left">Loves:</p> <p class="info-right">Mice</p></div>
-    <div><p class="info-left">Hates:</p> <p class="info-right">Noise</p></div>
+    <div><p class="info-left">Nickname:</p> <p class="info-right">{{miniprofile.Nickname}}</p></div>
+    <div><p class="info-left">Shifts:</p> <p class="info-right">{{miniprofile.Shifts}}</p></div>
+    <div><p class="info-left">Fav. Animal:</p> <p class="info-right">{{miniprofile.FavAnimal}}</p></div>
+    <div><p class="info-left">Loves:</p> <p class="info-right">{{miniprofile.Loves}}</p></div>
+    <div><p class="info-left">Hates:</p> <p class="info-right">{{miniprofile.Hates}}</p></div>
 </div>
+
+<app-modal #newMessage>
+    <div class="app-modal-header">
+        <h2><i class="fa fa-envelope"></i> New Message</h2>
+    </div>
+    <div class="app-modal-body">
+        To:<br/>
+        <div class="select">
+            <select [(ngModel)]="userSelected" (ngModelChange)="onSelect(userSelected)">
+                <option [value]="">Select User...</option>
+                <option *ngFor="let option of options" [value]="option"> 
+                  {{ option }}
+                </option>
+           </select>
+        </div>
+        Message:<br />
+        <input id="send-new-message-input" placeholder="Type your message here" [(ngModel)]="newusermessage" />
+    </div>
+    <div class="app-modal-footer">
+        <button type="button" class="modal-send" (click)="sendNewMessage()">Send</button>
+        <button id="closeModalButton" [hidden]="true" (click)="newMessage.hide()">Hide</button>
+    </div>
+</app-modal>

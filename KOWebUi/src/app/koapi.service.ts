@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from "@angular/http";
+import { Http, Response, Headers, RequestOptions } from "@angular/http";
 
 @Injectable()
 export class KoapiService {
 
   private _baseUrl = "http://localhost:50280/";
+  tempuser = "Liane";
   modules: any;
 
   constructor(private _http: Http) {
@@ -30,6 +31,17 @@ export class KoapiService {
         .toPromise()
         .then(this.extractData)
         .catch(this.handleError);
+  }
+
+  // Basic Post W/ Body
+  postService(url: string, body: any): Promise<any> {
+    console.log(body);
+    let headers = new Headers({'Content-Type': 'application/json'});
+    return this._http
+      .post(this._baseUrl + url, body, {headers: headers})
+      .toPromise()
+      .then(this.extractData)
+      .catch(this.handleError);
   }
 
 }

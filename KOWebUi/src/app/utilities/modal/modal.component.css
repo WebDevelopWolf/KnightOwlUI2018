@@ -1,0 +1,19 @@
+.modal {
+    background: rgba(0, 171, 46, 0.3);   
+}
+
+.modal-dialog {
+    margin-top: 100px;
+    border-radius: 5px;
+    max-width: 60%;
+}
+
+.modal-content {
+    background: #2d353d;
+    color: #dae1e1;
+}
+
+.modal-header {
+    color: #41c862;
+    font-weight: bold;
+}

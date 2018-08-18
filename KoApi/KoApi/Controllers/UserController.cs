@@ -12,29 +12,48 @@ namespace KoApi.Controllers
     {
         KoContext KoData = new KoContext();
 
-        // Get User Profile
-        [Route("User/{username}")]
+        #region Utility
+            // Get User by Username 
+            public User GetUserByUsername(string username)
+            {
+                if (username is null || username == "")
+                {
+                    return null;
+                }
+
+                var UserProfile = new User();
+                UserProfile = KoData.Users.Where(u => u.Username == username).FirstOrDefault();
+
+                if (UserProfile is null)
+                {
+                    return null;
+                }
+                else
+                {
+                    return UserProfile;
+                }
+
+            }
+        #endregion
+
+        #region GetUsers
+        [Route("users")]
         [HttpGet]
-        public IHttpActionResult GetUsersConversations(string username)
+        public IHttpActionResult GetAllUsers()
         {
-            // Protect against empty username
-            if (username is null || username == "")
+            List<User> SystemUsers = new List<User>();
+            SystemUsers = KoData.Users.ToList();
+
+            if (SystemUsers is null)
             {
                 return NotFound();
             }
 
-            // Get Full User Profile
-            User Profile = KoData.Users.Where(u => u.Username == username).FirstOrDefault();
-
-            // If we have conversations to return, then return them
-            if (Profile is null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                return Ok(Profile);
-            }
+            return Ok(SystemUsers);
         }
+        #endregion
+
+
+
     }
 }
