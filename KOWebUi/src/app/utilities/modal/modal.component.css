@@ -3,17 +3,28 @@
 }
 
 .modal-dialog {
-    margin-top: 100px;
-    border-radius: 5px;
+    margin-top: 250px;
     max-width: 60%;
+    border-radius: 0;
 }
 
 .modal-content {
     background: #2d353d;
-    color: #dae1e1;
+    color: #FFFFFF;
+    border-radius: 0;
+    border: 0;
 }
 
 .modal-header {
-    color: #41c862;
+    color: #00cf9b;
     font-weight: bold;
+    border-bottom: 0;
+}
+
+.modal-header h2 {
+    color: #00cf9b;
+}
+
+.modal-footer {
+    border-top: 0;
 }

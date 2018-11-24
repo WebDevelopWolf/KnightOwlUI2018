@@ -1,0 +1,161 @@
+<div id="animal-detail">
+  <section id="animal-details">
+    <div class="animal-row">
+      <img src={{animal?.avatar}} />
+      <div class="animal-info">
+        <p>{{animal?.Name}} {{animal?.Nickname}}</p>
+        <div class="row">
+          <div id="species" class="col">
+            <p id="species-text">Species: <span>{{animal?.SpeciesName}}</span></p>
+          </div>
+          <div class="col">
+            <p>Sub-Species: <span>{{animal?.SubSpeciesName}}</span></p>
+          </div>
+          <div class="col">
+            <p>Arrived: <span>{{animal?.Welcomed}}</span></p>
+          </div>
+          <div class="col">
+            <p>Age: <span>{{animal?.Age}} Years</span></p>
+          </div>
+          <div class="col">
+            <p>Enclosure: <span>{{animal?.EnclosureName}}</span></p>
+          </div>
+          <div class="col">
+            <p>Temperament: <span>{{animal?.Temperament}}</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="animal-tabs">
+    <div class="tabs">
+      <input type="radio" id="tab1" name="tab-control" checked>
+      <input type="radio" id="tab2" name="tab-control">
+      <input type="radio" id="tab3" name="tab-control">  
+      <input type="radio" id="tab4" name="tab-control">
+      <ul>
+        <li title="Keeper"><label for="tab1" role="button"><span><i class="fa fa-pencil"></i> Keeper Log</span></label></li>
+        <li title="Vets"><label for="tab2" role="button"><span><i class="fa fa-heartbeat"></i> Vetenary Records</span></label></li>
+        <li title="Feeding"><label for="tab3" role="button"><i class="fa fa-cutlery"></i> <span>Feeding</span></label></li>    
+        <li title="KB"><label for="tab4" role="button"><i class="fa fa-info-circle"></i> <span>Knowledge Base</span></label></li>
+      </ul>
+      
+      <div class="slider"><div class="indicator"></div></div>
+      <div class="content">
+        <section>
+            <div class="toolbar">
+                <input id="log-filter" [(ngModel)]="searchTextKeeper" class="filter" placeholder="FILTER KEEPER LOG..." />
+            </div> 
+          <div id="keeper-log">
+            <div id="log-heading" class="row">
+              <div class="col-lg-2">Keeper</div>
+              <div class="col-lg-1">Date</div>
+              <div class="col-lg-1">Time</div>
+              <div class="col-lg-2">Enclosure</div>
+              <div class="col-lg-6">Message</div>
+            </div>
+            <div *ngFor="let logs of keeperlog | filterKeeper : searchTextKeeper" class="row log-row">
+              <div class="col-lg-2">{{logs.Username}}</div>
+              <div class="col-lg-1">{{logs.LogDate}}</div>
+              <div class="col-lg-1">{{logs.LogTime}}</div>
+              <div class="col-lg-2">{{logs.EnclosureName}}</div>
+              <div class="col-lg-6">{{logs.Message}}</div>
+            </div>
+            <div *ngIf="!keeperlog" class="row log-row">
+                <div class="col-lg-12 text-center">No Keeper Logs</div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="toolbar">
+              <input id="vet-filter" [(ngModel)]="searchTextVet" class="filter" placeholder="FILTER VET LOG..." />
+          </div> 
+          <div id="vet-log">
+            <div id="log-heading" class="row">
+              <div class="col-lg-1">Date</div>
+              <div class="col-lg-1">Med Type</div>
+              <div class="col-lg-2">Administered</div>
+              <div class="col-lg-1">Dosage</div>
+              <div class="col-lg-2">Illness / Affected Area</div>
+              <div class="col-lg-3">Notes</div>
+              <div class="col-lg-2">Outcome / Change</div>
+            </div>
+            <div *ngFor="let logs of vetlog | filterVet : searchTextVet" class="row log-row">
+              <div class="col-lg-1">{{logs.LogDate}}</div>
+              <div class="col-lg-1">{{logs.MedType}}</div>
+              <div class="col-lg-2">{{logs.Administered}}</div>
+              <div class="col-lg-1">{{logs.Dosage}}</div>
+              <div class="col-lg-2">{{logs.IllnessArea}}</div>
+              <div class="col-lg-3">{{logs.Notes}}</div>
+              <div class="col-lg-2">{{logs.Outcome}}</div>
+            </div>
+            <div *ngIf="!vetlog" class="row log-row">
+                <div class="col-lg-12 text-center">No Vet Logs</div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="toolbar">
+              <input id="feed-filter" [(ngModel)]="searchTextFeed" class="filter" placeholder="FILTER FEED LOG..." />
+          </div> 
+          <div id="food-log">
+            <div id="log-heading" class="row">
+              <div class="col-lg-2">Day</div>
+              <div class="col-lg-1">AM / PM</div>
+              <div class="col-lg-3">Food</div>
+              <div class="col-lg-1">Amount</div>
+              <div class="col-lg-1">Cost (£)</div>
+              <div class="col-lg-2">Delivery Day</div>
+              <div class="col-lg-2">Supplier</div>
+            </div>
+            <div *ngFor="let logs of feedlog | filterFeed : searchTextFeed" class="row log-row">
+              <div class="col-lg-2">{{logs.FeedDay}}</div>
+              <div class="col-lg-1">{{logs.FeedPeriod}}</div>
+              <div class="col-lg-3">{{logs.Food}}</div>
+              <div class="col-lg-1">{{logs.FeedAmount}}</div>
+              <div class="col-lg-1">{{logs.FeedCost}}</div>
+              <div class="col-lg-2">{{logs.FeedDelivery}}</div>
+              <div class="col-lg-2">{{logs.FeedSupplier}}</div>
+            </div>
+            <div *ngIf="!feedlog" class="row log-row">
+                <div class="col-lg-12 text-center">No Feed Logs</div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div *ngIf="!kb" class="row kb-row">
+              <div class="col-lg-12 text-center">
+                No KB Entry For {{animal?.Name}}.<br />
+                <span>Add {{animal?.Name}} to the Knowledge Base?</span>
+              </div>
+          </div>
+          <div *ngIf="kb" id="tour-guide">
+            <h3>About {{animal?.Name}}</h3>
+            <div id="at-a-glance" class="row">
+              <div id="stats" class="col">
+                  <h3>Stats</h3>
+                  <p>
+                    Height: <span>{{kb.Height}}</span><br />
+                    Weight: <span>{{kb.Weight}}</span><br />
+                    Habitat: <span>{{kb.Habitat}}</span>
+                  </p>
+              </div>
+              <div *ngIf="dyk" class="col">
+                <h3>More about the {{animal?.SpeciesName}}</h3>
+                <p *ngFor="let d of dyk"><i class="fa fa-paw"></i> {{d.DykFact}}</p>
+              </div>
+            </div>
+            <div id="further-info">
+              <p>{{kb.About}}</p>
+              <p>{{animal?.Name}} is <span>{{kb.Age}}</span> year(s) old and in the wild can live up to <span>{{kb.AgeLimit}}</span> years old. 
+              At the centre Alfie eats <span>{{kb.Diet}}</span>, but in the wild might eat <span>{{kb.DietInWild}}</span>. 
+              The average weight of a skunk is <span>{{kb.AvgWeight}}</span>kg and they can grow up to <span>{{kb.AvgHeight}}</span> foot long.</p>
+              <p>{{kb.Story}}</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>  
+</div>

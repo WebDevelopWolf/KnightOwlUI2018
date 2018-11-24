@@ -14,6 +14,13 @@ import { TodoWidgetComponent } from './dashboard/widgets/todo-widget/todo-widget
 import { KeeperLogWidgetComponent } from './dashboard/widgets/keeper-log-widget/keeper-log-widget.component';
 import { InboxComponent } from './messages/inbox/inbox.component';
 import { ModalComponent } from './utilities/modal/modal.component';
+import { AnimalsComponent } from './animals/animals.component';
+
+import { FilterPipe } from './utilities/filters/filter.pipe';
+import { DetailComponent } from './animals/detail/detail.component';
+import { KeeperlogfilterPipe } from './utilities/filters/keeperlogfilter.pipe';
+import { vetlogfilterPipe } from './utilities/filters/vetlogfilter.pipe';
+import { FeedfilterPipe } from './utilities/filters/feedfilter.pipe';
 
 
 @NgModule({
@@ -26,7 +33,13 @@ import { ModalComponent } from './utilities/modal/modal.component';
     TodoWidgetComponent,
     KeeperLogWidgetComponent,
     InboxComponent,
-    ModalComponent
+    ModalComponent,
+    AnimalsComponent,
+    FilterPipe,
+    DetailComponent,
+    KeeperlogfilterPipe,
+    vetlogfilterPipe,
+    FeedfilterPipe
   ],
   imports: [
     BrowserModule,

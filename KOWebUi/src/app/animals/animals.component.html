@@ -1,0 +1,224 @@
+<div id="animal-list">
+  <div class="tabs">
+    <input type="radio" id="tab1" name="tab-control" checked>
+    <input type="radio" id="tab2" name="tab-control">
+    <input type="radio" id="tab3" name="tab-control">  
+    <input type="radio" id="tab4" name="tab-control">
+    <ul>
+      <li title="Fur"><label for="tab1" role="button"><span><i class="fa fa-paw"></i> Fur</span></label></li>
+      <li title="Feathers"><label for="tab2" role="button"><span><i class="fa fa-twitter"></i> Feathers</span></label></li>
+      <li title="Scales"><label for="tab3" role="button"><i class="fa fa-hand-lizard-o"></i> <span>Scales</span></label></li>    
+      <li title="Other"><label for="tab4" role="button"><i class="fa fa-microchip"></i> <span>Other</span></label></li>
+    </ul>
+    
+    <div class="slider"><div class="indicator"></div></div>
+    <div class="content">
+      <section>
+        <div class="toolbar">
+            <input id="fur-filter" [(ngModel)]="searchText" class="filter" placeholder="FILTER ANIMALS, SPECIES, ENCLOSURES, TEMPERAMENTS ETC." />
+            <button id="AddNewAnimal" class="ko-btn" (click)="addAnimal.show()">Add New Animal</button>
+            <button id="InspectionReport" class="ko-btn">Start Inspection Report</button>
+        </div> 
+        <div class="list-container">
+          <div class="animal-row" *ngFor="let furries of animalsFur | filter : searchText">
+            <img (click)="animalDetail(furries.AnimalId)" [src]="furries.avatar" />
+            <div class="animal-info">
+              <p class="animal-name" (click)="animalDetail(furries.AnimalId)">{{furries.Name}} {{furries.Nickname}}</p>
+              <div class="row">
+                <div id="species" class="col">
+                  <p id="species-text">Species: <span>{{furries.SpeciesName}}</span></p>
+                </div>
+                <div class="col">
+                  <p>Sub-Species: <span>{{furries.SubSpeciesName}}</span></p>
+                </div>
+                <div class="col">
+                  <p>Arrived: <span>{{furries.Welcomed}}</span></p>
+                </div>
+                <div class="col">
+                  <p>Age: <span>{{furries.Age}} Years</span></p>
+                </div>
+                <div class="col">
+                  <p>Enclosure: <span>{{furries.EnclosureName}}</span></p>
+                </div>
+                <div class="col">
+                  <p>Temperament: <span>{{furries.Temperament}}</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="toolbar">
+          <input id="fur-filter" [(ngModel)]="searchTextFeather" class="filter" placeholder="FILTER ANIMALS, SPECIES, ENCLOSURES, TEMPERAMENTS ETC." />
+          <button id="AddNewAnimal" class="ko-btn" (click)="addAnimal.show()">Add New Animal</button>
+          <button id="InspectionReport" class="ko-btn">Start Inspection Report</button>
+        </div> 
+        <div class="list-container">
+          <div class="animal-row" *ngFor="let furries of animalsFeather | filter : searchTextFeather">
+            <img (click)="animalDetail(furries.AnimalId)" [src]="furries.avatar" />
+            <div class="animal-info">
+              <p class="animal-name" (click)="animalDetail(furries.AnimalId)">{{furries.Name}} {{furries.Nickname}}</p>
+              <div class="row">
+                <div id="species" class="col">
+                  <p id="species-text">Species: <span>{{furries.SpeciesName}}</span></p>
+                </div>
+                <div class="col">
+                  <p>Sub-Species: <span>{{furries.SubSpeciesName}}</span></p>
+                </div>
+                <div class="col">
+                  <p>Arrived: <span>{{furries.Welcomed}}</span></p>
+                </div>
+                <div class="col">
+                  <p>Age: <span>{{furries.Age}} Years</span></p>
+                </div>
+                <div class="col">
+                  <p>Enclosure: <span>{{furries.EnclosureName}}</span></p>
+                </div>
+                <div class="col">
+                  <p>Temperament: <span>{{furries.Temperament}}</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="toolbar">
+          <input id="fur-filter" [(ngModel)]="searchTextScales" class="filter" placeholder="FILTER ANIMALS, SPECIES, ENCLOSURES, TEMPERAMENTS ETC." />
+          <button id="AddNewAnimal" class="ko-btn" (click)="addAnimal.show()">Add New Animal</button>
+          <button id="InspectionReport" class="ko-btn">Start Inspection Report</button>
+        </div> 
+        <div class="list-container">
+          <div class="animal-row" *ngFor="let furries of animalsScales | filter : searchTextScales">
+            <img (click)="animalDetail(furries.AnimalId)" [src]="furries.avatar" />
+            <div class="animal-info">
+              <p class="animal-name" (click)="animalDetail(furries.AnimalId)">{{furries.Name}} {{furries.Nickname}}</p>
+              <div class="row">
+                <div id="species" class="col">
+                  <p id="species-text">Species: <span>{{furries.SpeciesName}}</span></p>
+                </div>
+                <div class="col">
+                  <p>Sub-Species: <span>{{furries.SubSpeciesName}}</span></p>
+                </div>
+                <div class="col">
+                  <p>Arrived: <span>{{furries.Welcomed}}</span></p>
+                </div>
+                <div class="col">
+                  <p>Age: <span>{{furries.Age}} Years</span></p>
+                </div>
+                <div class="col">
+                  <p>Enclosure: <span>{{furries.EnclosureName}}</span></p>
+                </div>
+                <div class="col">
+                  <p>Temperament: <span>{{furries.Temperament}}</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="toolbar">
+          <input id="fur-filter" [(ngModel)]="searchTextOther" class="filter" placeholder="FILTER ANIMALS, SPECIES, ENCLOSURES, TEMPERAMENTS ETC." />
+          <button id="AddNewAnimal" class="ko-btn" (click)="addAnimal.show()">Add New Animal</button>
+          <button id="InspectionReport" class="ko-btn">Start Inspection Report</button>
+        </div> 
+        <div class="list-container">
+          <div class="animal-row" *ngFor="let furries of animalsOther | filter : searchTextOther">
+            <img (click)="animalDetail(furries.AnimalId)" [src]="furries.avatar" />
+            <div class="animal-info">
+              <p class="animal-name" (click)="animalDetail(furries.AnimalId)">{{furries.Name}} {{furries.Nickname}}</p>
+              <div class="row">
+                <div id="species" class="col">
+                  <p id="species-text">Species: <span>{{furries.SpeciesName}}</span></p>
+                </div>
+                <div class="col">
+                  <p>Sub-Species: <span>{{furries.SubSpeciesName}}</span></p>
+                </div>
+                <div class="col">
+                  <p>Arrived: <span>{{furries.Welcomed}}</span></p>
+                </div>
+                <div class="col">
+                  <p>Age: <span>{{furries.Age}} Years</span></p>
+                </div>
+                <div class="col">
+                  <p>Enclosure: <span>{{furries.EnclosureName}}</span></p>
+                </div>
+                <div class="col">
+                  <p>Temperament: <span>{{furries.Temperament}}</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<app-modal #addAnimal>
+
+  <div class="app-modal-header">
+      <h2><i class="fa fa-home"></i> Welcome home...</h2>
+  </div>
+
+  <div class="app-modal-body">
+      Name:<br />
+      <input class="ko-input" placeholder="What's your new resident going to be called?" [(ngModel)]="name" />
+
+      Classification:<br/>
+      <label class="select-box">
+          <select (change)="classSelect($event.target)">
+              <option [value]="">What type of animal is your new resident?</option>
+              <option [value]="classFur">Fur (Mammal)</option>
+              <option [value]="classFeather">Feathers (Birds)</option>
+              <option [value]="classScale">Scales (Reptile and Fish)</option>
+              <option [value]="classOther">Other (Inverts etc.)</option>
+         </select>
+      </label>
+            
+      Species:<br/>
+      <label class="select-box">
+          <select (change)="speciesSelect($event.target)">
+              <option [value]="">Species...</option>
+              <option *ngFor="let s of species" [value]="s.SpeciesId"> 
+                {{ s.SpeciesName }}
+              </option>
+         </select>
+      </label>
+
+      Sub-Species:<br/>
+      <label class="select-box">
+          <select (change)="subSpeciesSelect($event.target)">
+              <option [value]="">Select a species to see the sub-species...</option>
+              <option *ngFor="let ss of subSpecies" [value]="ss.SubSpeciesId"> 
+                {{ ss.SubSpeciesName }}
+              </option>
+         </select>
+      </label>
+      
+      Age:<br />
+      <input class="ko-input" placeholder="How old is your critter?" [(ngModel)]="age" />
+
+      Enclosure:<br/>
+      <label class="select-box">
+          <select (change)="enclosureSelect($event.target)">
+              <option [value]="">Where will they call home?</option>
+              <option *ngFor="let e of enclosures" [value]="e.EnclosureId"> 
+                {{ e.EnclosureName }}
+              </option>
+         </select>
+      </label>
+
+      Temperament:<br/>
+      <input class="ko-input" placeholder="How are they with people (in one word)?" [(ngModel)]="temperament" />
+
+  </div>
+
+  <div class="app-modal-footer">
+      <button type="button" class="ko-btn" (click)="AddNewAnimal()"><i class="fa fa-paw"></i> Add New Resident</button>
+      <button id="closeModalButton" [hidden]="true" (click)="addAnimal.hide()">Hide</button>
+  </div>
+
+</app-modal>

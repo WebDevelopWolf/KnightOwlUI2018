@@ -37,22 +37,31 @@ namespace KoApi.Models
     public interface IKoContext : System.IDisposable
     {
         System.Data.Entity.DbSet<Animal> Animals { get; set; } // Animal
+        System.Data.Entity.DbSet<AnimalList> AnimalLists { get; set; } // AnimalList
         System.Data.Entity.DbSet<Conversation> Conversations { get; set; } // Conversation
         System.Data.Entity.DbSet<ConversationMessage> ConversationMessages { get; set; } // ConversationMessage
         System.Data.Entity.DbSet<Dashboard> Dashboards { get; set; } // Dashboard
+        System.Data.Entity.DbSet<Enclosure> Enclosures { get; set; } // Enclosure
         System.Data.Entity.DbSet<Event> Events { get; set; } // Event
+        System.Data.Entity.DbSet<Feeding> Feedings { get; set; } // Feeding
         System.Data.Entity.DbSet<GetConversation> GetConversations { get; set; } // GetConversation
         System.Data.Entity.DbSet<GetUserConversation> GetUserConversations { get; set; } // GetUserConversations
+        System.Data.Entity.DbSet<KbDyk> KbDyks { get; set; } // KbDyk
         System.Data.Entity.DbSet<KeeperLog> KeeperLogs { get; set; } // KeeperLog
+        System.Data.Entity.DbSet<KeeperLogSingleAnimal> KeeperLogSingleAnimals { get; set; } // KeeperLogSingleAnimal
+        System.Data.Entity.DbSet<KnowledgeBase> KnowledgeBases { get; set; } // KnowledgeBase
         System.Data.Entity.DbSet<Module> Modules { get; set; } // Module
+        System.Data.Entity.DbSet<Species> Species { get; set; } // Species
         System.Data.Entity.DbSet<SubModule> SubModules { get; set; } // SubModule
         System.Data.Entity.DbSet<SubModuleHeading> SubModuleHeadings { get; set; } // SubModuleHeading
+        System.Data.Entity.DbSet<SubSpecy> SubSpecies { get; set; } // SubSpecies
         System.Data.Entity.DbSet<TodaysKeeperLog> TodaysKeeperLogs { get; set; } // TodaysKeeperLog
         System.Data.Entity.DbSet<ToDo> ToDoes { get; set; } // ToDo
         System.Data.Entity.DbSet<User> Users { get; set; } // User
         System.Data.Entity.DbSet<UserModule> UserModules { get; set; } // UserModule
         System.Data.Entity.DbSet<UserSubModule> UserSubModules { get; set; } // UserSubModule
         System.Data.Entity.DbSet<UserWidget> UserWidgets { get; set; } // UserWidget
+        System.Data.Entity.DbSet<Vetenary> Vetenaries { get; set; } // Vetenary
         System.Data.Entity.DbSet<Widget> Widgets { get; set; } // Widget
 
         int SaveChanges();
@@ -77,22 +86,31 @@ namespace KoApi.Models
     public class KoContext : System.Data.Entity.DbContext, IKoContext
     {
         public System.Data.Entity.DbSet<Animal> Animals { get; set; } // Animal
+        public System.Data.Entity.DbSet<AnimalList> AnimalLists { get; set; } // AnimalList
         public System.Data.Entity.DbSet<Conversation> Conversations { get; set; } // Conversation
         public System.Data.Entity.DbSet<ConversationMessage> ConversationMessages { get; set; } // ConversationMessage
         public System.Data.Entity.DbSet<Dashboard> Dashboards { get; set; } // Dashboard
+        public System.Data.Entity.DbSet<Enclosure> Enclosures { get; set; } // Enclosure
         public System.Data.Entity.DbSet<Event> Events { get; set; } // Event
+        public System.Data.Entity.DbSet<Feeding> Feedings { get; set; } // Feeding
         public System.Data.Entity.DbSet<GetConversation> GetConversations { get; set; } // GetConversation
         public System.Data.Entity.DbSet<GetUserConversation> GetUserConversations { get; set; } // GetUserConversations
+        public System.Data.Entity.DbSet<KbDyk> KbDyks { get; set; } // KbDyk
         public System.Data.Entity.DbSet<KeeperLog> KeeperLogs { get; set; } // KeeperLog
+        public System.Data.Entity.DbSet<KeeperLogSingleAnimal> KeeperLogSingleAnimals { get; set; } // KeeperLogSingleAnimal
+        public System.Data.Entity.DbSet<KnowledgeBase> KnowledgeBases { get; set; } // KnowledgeBase
         public System.Data.Entity.DbSet<Module> Modules { get; set; } // Module
+        public System.Data.Entity.DbSet<Species> Species { get; set; } // Species
         public System.Data.Entity.DbSet<SubModule> SubModules { get; set; } // SubModule
         public System.Data.Entity.DbSet<SubModuleHeading> SubModuleHeadings { get; set; } // SubModuleHeading
+        public System.Data.Entity.DbSet<SubSpecy> SubSpecies { get; set; } // SubSpecies
         public System.Data.Entity.DbSet<TodaysKeeperLog> TodaysKeeperLogs { get; set; } // TodaysKeeperLog
         public System.Data.Entity.DbSet<ToDo> ToDoes { get; set; } // ToDo
         public System.Data.Entity.DbSet<User> Users { get; set; } // User
         public System.Data.Entity.DbSet<UserModule> UserModules { get; set; } // UserModule
         public System.Data.Entity.DbSet<UserSubModule> UserSubModules { get; set; } // UserSubModule
         public System.Data.Entity.DbSet<UserWidget> UserWidgets { get; set; } // UserWidget
+        public System.Data.Entity.DbSet<Vetenary> Vetenaries { get; set; } // Vetenary
         public System.Data.Entity.DbSet<Widget> Widgets { get; set; } // Widget
 
         static KoContext()
@@ -144,44 +162,62 @@ namespace KoApi.Models
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Configurations.Add(new AnimalConfiguration());
+            modelBuilder.Configurations.Add(new AnimalListConfiguration());
             modelBuilder.Configurations.Add(new ConversationConfiguration());
             modelBuilder.Configurations.Add(new ConversationMessageConfiguration());
             modelBuilder.Configurations.Add(new DashboardConfiguration());
+            modelBuilder.Configurations.Add(new EnclosureConfiguration());
             modelBuilder.Configurations.Add(new EventConfiguration());
+            modelBuilder.Configurations.Add(new FeedingConfiguration());
             modelBuilder.Configurations.Add(new GetConversationConfiguration());
             modelBuilder.Configurations.Add(new GetUserConversationConfiguration());
+            modelBuilder.Configurations.Add(new KbDykConfiguration());
             modelBuilder.Configurations.Add(new KeeperLogConfiguration());
+            modelBuilder.Configurations.Add(new KeeperLogSingleAnimalConfiguration());
+            modelBuilder.Configurations.Add(new KnowledgeBaseConfiguration());
             modelBuilder.Configurations.Add(new ModuleConfiguration());
+            modelBuilder.Configurations.Add(new SpeciesConfiguration());
             modelBuilder.Configurations.Add(new SubModuleConfiguration());
             modelBuilder.Configurations.Add(new SubModuleHeadingConfiguration());
+            modelBuilder.Configurations.Add(new SubSpecyConfiguration());
             modelBuilder.Configurations.Add(new TodaysKeeperLogConfiguration());
             modelBuilder.Configurations.Add(new ToDoConfiguration());
             modelBuilder.Configurations.Add(new UserConfiguration());
             modelBuilder.Configurations.Add(new UserModuleConfiguration());
             modelBuilder.Configurations.Add(new UserSubModuleConfiguration());
             modelBuilder.Configurations.Add(new UserWidgetConfiguration());
+            modelBuilder.Configurations.Add(new VetenaryConfiguration());
             modelBuilder.Configurations.Add(new WidgetConfiguration());
         }
 
         public static System.Data.Entity.DbModelBuilder CreateModel(System.Data.Entity.DbModelBuilder modelBuilder, string schema)
         {
             modelBuilder.Configurations.Add(new AnimalConfiguration(schema));
+            modelBuilder.Configurations.Add(new AnimalListConfiguration(schema));
             modelBuilder.Configurations.Add(new ConversationConfiguration(schema));
             modelBuilder.Configurations.Add(new ConversationMessageConfiguration(schema));
             modelBuilder.Configurations.Add(new DashboardConfiguration(schema));
+            modelBuilder.Configurations.Add(new EnclosureConfiguration(schema));
             modelBuilder.Configurations.Add(new EventConfiguration(schema));
+            modelBuilder.Configurations.Add(new FeedingConfiguration(schema));
             modelBuilder.Configurations.Add(new GetConversationConfiguration(schema));
             modelBuilder.Configurations.Add(new GetUserConversationConfiguration(schema));
+            modelBuilder.Configurations.Add(new KbDykConfiguration(schema));
             modelBuilder.Configurations.Add(new KeeperLogConfiguration(schema));
+            modelBuilder.Configurations.Add(new KeeperLogSingleAnimalConfiguration(schema));
+            modelBuilder.Configurations.Add(new KnowledgeBaseConfiguration(schema));
             modelBuilder.Configurations.Add(new ModuleConfiguration(schema));
+            modelBuilder.Configurations.Add(new SpeciesConfiguration(schema));
             modelBuilder.Configurations.Add(new SubModuleConfiguration(schema));
             modelBuilder.Configurations.Add(new SubModuleHeadingConfiguration(schema));
+            modelBuilder.Configurations.Add(new SubSpecyConfiguration(schema));
             modelBuilder.Configurations.Add(new TodaysKeeperLogConfiguration(schema));
             modelBuilder.Configurations.Add(new ToDoConfiguration(schema));
             modelBuilder.Configurations.Add(new UserConfiguration(schema));
             modelBuilder.Configurations.Add(new UserModuleConfiguration(schema));
             modelBuilder.Configurations.Add(new UserSubModuleConfiguration(schema));
             modelBuilder.Configurations.Add(new UserWidgetConfiguration(schema));
+            modelBuilder.Configurations.Add(new VetenaryConfiguration(schema));
             modelBuilder.Configurations.Add(new WidgetConfiguration(schema));
             return modelBuilder;
         }
@@ -206,43 +242,61 @@ namespace KoApi.Models
     public class FakeKoContext : IKoContext
     {
         public System.Data.Entity.DbSet<Animal> Animals { get; set; }
+        public System.Data.Entity.DbSet<AnimalList> AnimalLists { get; set; }
         public System.Data.Entity.DbSet<Conversation> Conversations { get; set; }
         public System.Data.Entity.DbSet<ConversationMessage> ConversationMessages { get; set; }
         public System.Data.Entity.DbSet<Dashboard> Dashboards { get; set; }
+        public System.Data.Entity.DbSet<Enclosure> Enclosures { get; set; }
         public System.Data.Entity.DbSet<Event> Events { get; set; }
+        public System.Data.Entity.DbSet<Feeding> Feedings { get; set; }
         public System.Data.Entity.DbSet<GetConversation> GetConversations { get; set; }
         public System.Data.Entity.DbSet<GetUserConversation> GetUserConversations { get; set; }
+        public System.Data.Entity.DbSet<KbDyk> KbDyks { get; set; }
         public System.Data.Entity.DbSet<KeeperLog> KeeperLogs { get; set; }
+        public System.Data.Entity.DbSet<KeeperLogSingleAnimal> KeeperLogSingleAnimals { get; set; }
+        public System.Data.Entity.DbSet<KnowledgeBase> KnowledgeBases { get; set; }
         public System.Data.Entity.DbSet<Module> Modules { get; set; }
+        public System.Data.Entity.DbSet<Species> Species { get; set; }
         public System.Data.Entity.DbSet<SubModule> SubModules { get; set; }
         public System.Data.Entity.DbSet<SubModuleHeading> SubModuleHeadings { get; set; }
+        public System.Data.Entity.DbSet<SubSpecy> SubSpecies { get; set; }
         public System.Data.Entity.DbSet<TodaysKeeperLog> TodaysKeeperLogs { get; set; }
         public System.Data.Entity.DbSet<ToDo> ToDoes { get; set; }
         public System.Data.Entity.DbSet<User> Users { get; set; }
         public System.Data.Entity.DbSet<UserModule> UserModules { get; set; }
         public System.Data.Entity.DbSet<UserSubModule> UserSubModules { get; set; }
         public System.Data.Entity.DbSet<UserWidget> UserWidgets { get; set; }
+        public System.Data.Entity.DbSet<Vetenary> Vetenaries { get; set; }
         public System.Data.Entity.DbSet<Widget> Widgets { get; set; }
 
         public FakeKoContext()
         {
             Animals = new FakeDbSet<Animal>("AnimalId");
+            AnimalLists = new FakeDbSet<AnimalList>("AnimalId", "Name", "Nickname", "Welcomed", "Age", "Temperament", "Classification", "SpeciesName", "SubSpeciesName", "EnclosureName");
             Conversations = new FakeDbSet<Conversation>("ConversationId");
             ConversationMessages = new FakeDbSet<ConversationMessage>("ConversationMessageId");
             Dashboards = new FakeDbSet<Dashboard>("DashId");
+            Enclosures = new FakeDbSet<Enclosure>("EnclosureId");
             Events = new FakeDbSet<Event>("EventId");
+            Feedings = new FakeDbSet<Feeding>("FeedId");
             GetConversations = new FakeDbSet<GetConversation>("MessageBody", "ConversationId");
-            GetUserConversations = new FakeDbSet<GetUserConversation>("ConversationId");
+            GetUserConversations = new FakeDbSet<GetUserConversation>("ConversationId", "FromUser", "ToUser", "LastMessageBody");
+            KbDyks = new FakeDbSet<KbDyk>("DykId");
             KeeperLogs = new FakeDbSet<KeeperLog>("KeeperLogId");
+            KeeperLogSingleAnimals = new FakeDbSet<KeeperLogSingleAnimal>("Username", "LogDate", "EnclosureName", "Message", "AnimalId");
+            KnowledgeBases = new FakeDbSet<KnowledgeBase>("KbId");
             Modules = new FakeDbSet<Module>("ModuleId");
+            Species = new FakeDbSet<Species>("SpeciesId");
             SubModules = new FakeDbSet<SubModule>("SubModuleId");
             SubModuleHeadings = new FakeDbSet<SubModuleHeading>("ModuleTitle", "Description", "Instruction", "RouterLink");
+            SubSpecies = new FakeDbSet<SubSpecy>("SubSpeciesId");
             TodaysKeeperLogs = new FakeDbSet<TodaysKeeperLog>("KeeperLogId", "Message", "User");
             ToDoes = new FakeDbSet<ToDo>("ToDoId");
             Users = new FakeDbSet<User>("UserId");
             UserModules = new FakeDbSet<UserModule>("UserModuleId");
             UserSubModules = new FakeDbSet<UserSubModule>("UserSubModuleId");
             UserWidgets = new FakeDbSet<UserWidget>("UserWidgetId");
+            Vetenaries = new FakeDbSet<Vetenary>("VetenaryId");
             Widgets = new FakeDbSet<Widget>("WidgetId");
         }
 
@@ -569,6 +623,37 @@ namespace KoApi.Models
     {
         public System.Guid AnimalId { get; set; } // AnimalId (Primary key)
         public string Name { get; set; } // Name (length: 30)
+        public string Nickname { get; set; } // Nickname (length: 30)
+        public System.Guid Species { get; set; } // Species
+        public string Welcomed { get; set; } // Welcomed (length: 10)
+        public int Age { get; set; } // Age
+        public System.Guid Enclosure { get; set; } // Enclosure
+        public string Temperament { get; set; } // Temperament (length: 15)
+        public string Classification { get; set; } // Classification (length: 10)
+
+        public Animal()
+        {
+            Nickname = "";
+            Age = 0;
+            Temperament = "";
+            Classification = "";
+        }
+    }
+
+    // AnimalList
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class AnimalList
+    {
+        public System.Guid AnimalId { get; set; } // AnimalId (Primary key)
+        public string Name { get; set; } // Name (Primary key) (length: 30)
+        public string Nickname { get; set; } // Nickname (Primary key) (length: 30)
+        public string Welcomed { get; set; } // Welcomed (Primary key) (length: 10)
+        public int Age { get; set; } // Age (Primary key)
+        public string Temperament { get; set; } // Temperament (Primary key) (length: 15)
+        public string Classification { get; set; } // Classification (Primary key) (length: 10)
+        public string SpeciesName { get; set; } // SpeciesName (Primary key) (length: 50)
+        public string SubSpeciesName { get; set; } // SubSpeciesName (Primary key) (length: 50)
+        public string EnclosureName { get; set; } // EnclosureName (Primary key) (length: 50)
     }
 
     // Conversation
@@ -611,6 +696,19 @@ namespace KoApi.Models
         public bool? ShowWidgets { get; set; } // ShowWidgets
     }
 
+    // Enclosure
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class Enclosure
+    {
+        public System.Guid EnclosureId { get; set; } // EnclosureId (Primary key)
+        public string EnclosureName { get; set; } // EnclosureName (length: 50)
+        public string EnclosureLocation { get; set; } // EnclosureLocation (length: 50)
+        public string EnclosureType { get; set; } // EnclosureType (length: 25)
+        public string EnclosureFencing { get; set; } // EnclosureFencing (length: 50)
+        public double EnclosureSize { get; set; } // EnclosureSize
+        public string EnclosureSizeUnit { get; set; } // EnclosureSizeUnit (length: 50)
+    }
+
     // Event
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
     public class Event
@@ -619,6 +717,32 @@ namespace KoApi.Models
         public string EventTitle { get; set; } // EventTitle (length: 50)
         public int Category { get; set; } // Category
         public System.DateTime EventDate { get; set; } // EventDate
+    }
+
+    // Feeding
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class Feeding
+    {
+        public System.Guid FeedId { get; set; } // FeedId (Primary key)
+        public string FeedDay { get; set; } // FeedDay (length: 25)
+        public string FeedPeriod { get; set; } // FeedPeriod (length: 2)
+        public string Food { get; set; } // Food (length: 250)
+        public string FeedAmount { get; set; } // FeedAmount (length: 10)
+        public double FeedCost { get; set; } // FeedCost
+        public string FeedDelivery { get; set; } // FeedDelivery (length: 25)
+        public string FeedSupplier { get; set; } // FeedSupplier (length: 150)
+        public System.Guid AnimalId { get; set; } // AnimalId
+
+        public Feeding()
+        {
+            FeedDay = "";
+            FeedPeriod = "";
+            Food = "";
+            FeedAmount = "";
+            FeedCost = 0;
+            FeedDelivery = "";
+            FeedSupplier = "";
+        }
     }
 
     // GetConversation
@@ -637,10 +761,24 @@ namespace KoApi.Models
     public class GetUserConversation
     {
         public System.Guid ConversationId { get; set; } // ConversationId (Primary key)
-        public string FromUser { get; set; } // FromUser (length: 50)
-        public string ToUser { get; set; } // ToUser (length: 50)
-        public string LastMessageBody { get; set; } // LastMessageBody
+        public string FromUser { get; set; } // FromUser (Primary key) (length: 50)
+        public string ToUser { get; set; } // ToUser (Primary key) (length: 50)
+        public string LastMessageBody { get; set; } // LastMessageBody (Primary key)
         public string LastMessageTime { get; set; } // LastMessageTime (length: 5)
+    }
+
+    // KbDyk
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class KbDyk
+    {
+        public System.Guid DykId { get; set; } // DykId (Primary key)
+        public System.Guid AnimalId { get; set; } // AnimalId
+        public string DykFact { get; set; } // DykFact (length: 300)
+
+        public KbDyk()
+        {
+            DykFact = "";
+        }
     }
 
     // KeeperLog
@@ -652,6 +790,52 @@ namespace KoApi.Models
         public System.DateTime LogDate { get; set; } // LogDate
         public string Message { get; set; } // Message (length: 250)
         public System.Guid? UserId { get; set; } // UserId
+        public System.Guid? EnclosureId { get; set; } // EnclosureId
+    }
+
+    // KeeperLogSingleAnimal
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class KeeperLogSingleAnimal
+    {
+        public string Username { get; set; } // Username (Primary key) (length: 50)
+        public System.DateTime LogDate { get; set; } // LogDate (Primary key)
+        public string EnclosureName { get; set; } // EnclosureName (Primary key) (length: 50)
+        public string Message { get; set; } // Message (Primary key) (length: 250)
+        public System.Guid AnimalId { get; set; } // AnimalId (Primary key)
+    }
+
+    // KnowledgeBase
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class KnowledgeBase
+    {
+        public System.Guid KbId { get; set; } // KbId (Primary key)
+        public System.Guid AnimalId { get; set; } // AnimalId
+        public string Height { get; set; } // Height (length: 10)
+        public string Weight { get; set; } // Weight (length: 10)
+        public string Habitat { get; set; } // Habitat (length: 50)
+        public string About { get; set; } // About
+        public int Age { get; set; } // Age
+        public int AgeLimit { get; set; } // AgeLimit
+        public string Diet { get; set; } // Diet (length: 300)
+        public string DietInWild { get; set; } // DietInWild (length: 300)
+        public int AvgWeight { get; set; } // AvgWeight
+        public int AvgHeight { get; set; } // AvgHeight
+        public string Story { get; set; } // Story
+
+        public KnowledgeBase()
+        {
+            Height = "";
+            Weight = "";
+            Habitat = "";
+            About = "";
+            Age = 0;
+            AgeLimit = 0;
+            Diet = "";
+            DietInWild = "";
+            AvgWeight = 0;
+            AvgHeight = 0;
+            Story = "";
+        }
     }
 
     // Module
@@ -666,6 +850,14 @@ namespace KoApi.Models
         public string Description { get; set; } // Description (length: 250)
         public string Instruction { get; set; } // Instruction (length: 250)
         public int? ViewOrder { get; set; } // ViewOrder
+    }
+
+    // Species
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class Species
+    {
+        public System.Guid SpeciesId { get; set; } // SpeciesId (Primary key)
+        public string SpeciesName { get; set; } // SpeciesName (length: 50)
     }
 
     // SubModule
@@ -687,6 +879,15 @@ namespace KoApi.Models
         public string Description { get; set; } // Description (Primary key) (length: 250)
         public string Instruction { get; set; } // Instruction (Primary key) (length: 250)
         public string RouterLink { get; set; } // RouterLink (Primary key) (length: 100)
+    }
+
+    // SubSpecies
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class SubSpecy
+    {
+        public System.Guid SubSpeciesId { get; set; } // SubSpeciesId (Primary key)
+        public System.Guid SpeciesId { get; set; } // SpeciesId
+        public string SubSpeciesName { get; set; } // SubSpeciesName (length: 50)
     }
 
     // TodaysKeeperLog
@@ -767,6 +968,28 @@ namespace KoApi.Models
         public System.DateTime DateAdded { get; set; } // DateAdded
     }
 
+    // Vetenary
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class Vetenary
+    {
+        public System.Guid VetenaryId { get; set; } // VetenaryId (Primary key)
+        public System.DateTime LogDate { get; set; } // LogDate
+        public string MedType { get; set; } // MedType (length: 50)
+        public string Administered { get; set; } // Administered (length: 150)
+        public string Dosage { get; set; } // Dosage (length: 10)
+        public string IllnessArea { get; set; } // IllnessArea (length: 150)
+        public string Notes { get; set; } // Notes
+        public string Outcome { get; set; } // Outcome (length: 250)
+        public System.Guid AnimalId { get; set; } // AnimalId
+
+        public Vetenary()
+        {
+            MedType = "";
+            IllnessArea = "";
+            Outcome = "";
+        }
+    }
+
     // Widget
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
     public class Widget
@@ -796,7 +1019,41 @@ namespace KoApi.Models
             HasKey(x => x.AnimalId);
 
             Property(x => x.AnimalId).HasColumnName(@"AnimalId").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.Name).HasColumnName(@"Name").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(30);
+            Property(x => x.Name).HasColumnName(@"Name").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(30);
+            Property(x => x.Nickname).HasColumnName(@"Nickname").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(30);
+            Property(x => x.Species).HasColumnName(@"Species").HasColumnType("uniqueidentifier").IsRequired();
+            Property(x => x.Welcomed).HasColumnName(@"Welcomed").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(10);
+            Property(x => x.Age).HasColumnName(@"Age").HasColumnType("int").IsRequired();
+            Property(x => x.Enclosure).HasColumnName(@"Enclosure").HasColumnType("uniqueidentifier").IsRequired();
+            Property(x => x.Temperament).HasColumnName(@"Temperament").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(15);
+            Property(x => x.Classification).HasColumnName(@"Classification").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(10);
+        }
+    }
+
+    // AnimalList
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class AnimalListConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AnimalList>
+    {
+        public AnimalListConfiguration()
+            : this("dbo")
+        {
+        }
+
+        public AnimalListConfiguration(string schema)
+        {
+            ToTable("AnimalList", schema);
+            HasKey(x => new { x.AnimalId, x.Name, x.Nickname, x.Welcomed, x.Age, x.Temperament, x.Classification, x.SpeciesName, x.SubSpeciesName, x.EnclosureName });
+
+            Property(x => x.AnimalId).HasColumnName(@"AnimalId").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.Name).HasColumnName(@"Name").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(30).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.Nickname).HasColumnName(@"Nickname").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(30).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.Welcomed).HasColumnName(@"Welcomed").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(10).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.Age).HasColumnName(@"Age").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.Temperament).HasColumnName(@"Temperament").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(15).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.Classification).HasColumnName(@"Classification").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(10).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.SpeciesName).HasColumnName(@"SpeciesName").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.SubSpeciesName).HasColumnName(@"SubSpeciesName").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.EnclosureName).HasColumnName(@"EnclosureName").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
         }
     }
 
@@ -868,6 +1125,30 @@ namespace KoApi.Models
         }
     }
 
+    // Enclosure
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class EnclosureConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Enclosure>
+    {
+        public EnclosureConfiguration()
+            : this("dbo")
+        {
+        }
+
+        public EnclosureConfiguration(string schema)
+        {
+            ToTable("Enclosure", schema);
+            HasKey(x => x.EnclosureId);
+
+            Property(x => x.EnclosureId).HasColumnName(@"EnclosureId").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.EnclosureName).HasColumnName(@"EnclosureName").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50);
+            Property(x => x.EnclosureLocation).HasColumnName(@"EnclosureLocation").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50);
+            Property(x => x.EnclosureType).HasColumnName(@"EnclosureType").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(25);
+            Property(x => x.EnclosureFencing).HasColumnName(@"EnclosureFencing").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50);
+            Property(x => x.EnclosureSize).HasColumnName(@"EnclosureSize").HasColumnType("float").IsRequired();
+            Property(x => x.EnclosureSizeUnit).HasColumnName(@"EnclosureSizeUnit").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50);
+        }
+    }
+
     // Event
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
     public class EventConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Event>
@@ -886,6 +1167,32 @@ namespace KoApi.Models
             Property(x => x.EventTitle).HasColumnName(@"EventTitle").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50);
             Property(x => x.Category).HasColumnName(@"Category").HasColumnType("int").IsRequired();
             Property(x => x.EventDate).HasColumnName(@"EventDate").HasColumnType("datetime").IsRequired();
+        }
+    }
+
+    // Feeding
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class FeedingConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Feeding>
+    {
+        public FeedingConfiguration()
+            : this("dbo")
+        {
+        }
+
+        public FeedingConfiguration(string schema)
+        {
+            ToTable("Feeding", schema);
+            HasKey(x => x.FeedId);
+
+            Property(x => x.FeedId).HasColumnName(@"FeedId").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.FeedDay).HasColumnName(@"FeedDay").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(25);
+            Property(x => x.FeedPeriod).HasColumnName(@"FeedPeriod").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(2);
+            Property(x => x.Food).HasColumnName(@"Food").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(250);
+            Property(x => x.FeedAmount).HasColumnName(@"FeedAmount").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(10);
+            Property(x => x.FeedCost).HasColumnName(@"FeedCost").HasColumnType("float").IsRequired();
+            Property(x => x.FeedDelivery).HasColumnName(@"FeedDelivery").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(25);
+            Property(x => x.FeedSupplier).HasColumnName(@"FeedSupplier").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(150);
+            Property(x => x.AnimalId).HasColumnName(@"AnimalId").HasColumnType("uniqueidentifier").IsRequired();
         }
     }
 
@@ -923,13 +1230,33 @@ namespace KoApi.Models
         public GetUserConversationConfiguration(string schema)
         {
             ToTable("GetUserConversations", schema);
-            HasKey(x => x.ConversationId);
+            HasKey(x => new { x.ConversationId, x.FromUser, x.ToUser, x.LastMessageBody });
 
             Property(x => x.ConversationId).HasColumnName(@"ConversationId").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.FromUser).HasColumnName(@"FromUser").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
-            Property(x => x.ToUser).HasColumnName(@"ToUser").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
-            Property(x => x.LastMessageBody).HasColumnName(@"LastMessageBody").HasColumnType("varchar(max)").IsOptional().IsUnicode(false);
+            Property(x => x.FromUser).HasColumnName(@"FromUser").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.ToUser).HasColumnName(@"ToUser").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.LastMessageBody).HasColumnName(@"LastMessageBody").HasColumnType("varchar(max)").IsRequired().IsUnicode(false).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
             Property(x => x.LastMessageTime).HasColumnName(@"LastMessageTime").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(5);
+        }
+    }
+
+    // KbDyk
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class KbDykConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<KbDyk>
+    {
+        public KbDykConfiguration()
+            : this("dbo")
+        {
+        }
+
+        public KbDykConfiguration(string schema)
+        {
+            ToTable("KbDyk", schema);
+            HasKey(x => x.DykId);
+
+            Property(x => x.DykId).HasColumnName(@"DykId").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.AnimalId).HasColumnName(@"AnimalId").HasColumnType("uniqueidentifier").IsRequired();
+            Property(x => x.DykFact).HasColumnName(@"DykFact").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(300);
         }
     }
 
@@ -952,6 +1279,59 @@ namespace KoApi.Models
             Property(x => x.LogDate).HasColumnName(@"LogDate").HasColumnType("datetime").IsRequired();
             Property(x => x.Message).HasColumnName(@"Message").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(250);
             Property(x => x.UserId).HasColumnName(@"UserId").HasColumnType("uniqueidentifier").IsOptional();
+            Property(x => x.EnclosureId).HasColumnName(@"EnclosureId").HasColumnType("uniqueidentifier").IsOptional();
+        }
+    }
+
+    // KeeperLogSingleAnimal
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class KeeperLogSingleAnimalConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<KeeperLogSingleAnimal>
+    {
+        public KeeperLogSingleAnimalConfiguration()
+            : this("dbo")
+        {
+        }
+
+        public KeeperLogSingleAnimalConfiguration(string schema)
+        {
+            ToTable("KeeperLogSingleAnimal", schema);
+            HasKey(x => new { x.Username, x.LogDate, x.EnclosureName, x.Message, x.AnimalId });
+
+            Property(x => x.Username).HasColumnName(@"Username").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.LogDate).HasColumnName(@"LogDate").HasColumnType("datetime").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.EnclosureName).HasColumnName(@"EnclosureName").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.Message).HasColumnName(@"Message").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(250).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.AnimalId).HasColumnName(@"AnimalId").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+        }
+    }
+
+    // KnowledgeBase
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class KnowledgeBaseConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<KnowledgeBase>
+    {
+        public KnowledgeBaseConfiguration()
+            : this("dbo")
+        {
+        }
+
+        public KnowledgeBaseConfiguration(string schema)
+        {
+            ToTable("KnowledgeBase", schema);
+            HasKey(x => x.KbId);
+
+            Property(x => x.KbId).HasColumnName(@"KbId").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.AnimalId).HasColumnName(@"AnimalId").HasColumnType("uniqueidentifier").IsRequired();
+            Property(x => x.Height).HasColumnName(@"Height").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(10);
+            Property(x => x.Weight).HasColumnName(@"Weight").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(10);
+            Property(x => x.Habitat).HasColumnName(@"Habitat").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50);
+            Property(x => x.About).HasColumnName(@"About").HasColumnType("varchar(max)").IsRequired().IsUnicode(false);
+            Property(x => x.Age).HasColumnName(@"Age").HasColumnType("int").IsRequired();
+            Property(x => x.AgeLimit).HasColumnName(@"AgeLimit").HasColumnType("int").IsRequired();
+            Property(x => x.Diet).HasColumnName(@"Diet").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(300);
+            Property(x => x.DietInWild).HasColumnName(@"DietInWild").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(300);
+            Property(x => x.AvgWeight).HasColumnName(@"AvgWeight").HasColumnType("int").IsRequired();
+            Property(x => x.AvgHeight).HasColumnName(@"AvgHeight").HasColumnType("int").IsRequired();
+            Property(x => x.Story).HasColumnName(@"Story").HasColumnType("varchar(max)").IsRequired().IsUnicode(false);
         }
     }
 
@@ -977,6 +1357,25 @@ namespace KoApi.Models
             Property(x => x.Description).HasColumnName(@"Description").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(250);
             Property(x => x.Instruction).HasColumnName(@"Instruction").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(250);
             Property(x => x.ViewOrder).HasColumnName(@"ViewOrder").HasColumnType("int").IsOptional();
+        }
+    }
+
+    // Species
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class SpeciesConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Species>
+    {
+        public SpeciesConfiguration()
+            : this("dbo")
+        {
+        }
+
+        public SpeciesConfiguration(string schema)
+        {
+            ToTable("Species", schema);
+            HasKey(x => x.SpeciesId);
+
+            Property(x => x.SpeciesId).HasColumnName(@"SpeciesId").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.SpeciesName).HasColumnName(@"SpeciesName").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50);
         }
     }
 
@@ -1020,6 +1419,26 @@ namespace KoApi.Models
             Property(x => x.Description).HasColumnName(@"Description").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(250).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
             Property(x => x.Instruction).HasColumnName(@"Instruction").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(250).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
             Property(x => x.RouterLink).HasColumnName(@"RouterLink").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(100).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+        }
+    }
+
+    // SubSpecies
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class SubSpecyConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SubSpecy>
+    {
+        public SubSpecyConfiguration()
+            : this("dbo")
+        {
+        }
+
+        public SubSpecyConfiguration(string schema)
+        {
+            ToTable("SubSpecies", schema);
+            HasKey(x => x.SubSpeciesId);
+
+            Property(x => x.SubSpeciesId).HasColumnName(@"SubSpeciesId").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.SpeciesId).HasColumnName(@"SpeciesId").HasColumnType("uniqueidentifier").IsRequired();
+            Property(x => x.SubSpeciesName).HasColumnName(@"SubSpeciesName").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50);
         }
     }
 
@@ -1155,6 +1574,32 @@ namespace KoApi.Models
             Property(x => x.WidgetId).HasColumnName(@"WidgetId").HasColumnType("uniqueidentifier").IsRequired();
             Property(x => x.UserId).HasColumnName(@"UserId").HasColumnType("uniqueidentifier").IsRequired();
             Property(x => x.DateAdded).HasColumnName(@"DateAdded").HasColumnType("datetime").IsRequired();
+        }
+    }
+
+    // Vetenary
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class VetenaryConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Vetenary>
+    {
+        public VetenaryConfiguration()
+            : this("dbo")
+        {
+        }
+
+        public VetenaryConfiguration(string schema)
+        {
+            ToTable("Vetenary", schema);
+            HasKey(x => x.VetenaryId);
+
+            Property(x => x.VetenaryId).HasColumnName(@"VetenaryId").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.LogDate).HasColumnName(@"LogDate").HasColumnType("datetime").IsRequired();
+            Property(x => x.MedType).HasColumnName(@"MedType").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50);
+            Property(x => x.Administered).HasColumnName(@"Administered").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(150);
+            Property(x => x.Dosage).HasColumnName(@"Dosage").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(10);
+            Property(x => x.IllnessArea).HasColumnName(@"IllnessArea").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(150);
+            Property(x => x.Notes).HasColumnName(@"Notes").HasColumnType("varchar(max)").IsOptional().IsUnicode(false);
+            Property(x => x.Outcome).HasColumnName(@"Outcome").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(250);
+            Property(x => x.AnimalId).HasColumnName(@"AnimalId").HasColumnType("uniqueidentifier").IsRequired();
         }
     }
 

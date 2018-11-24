@@ -190,11 +190,15 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AnimalController.cs" />
     <Compile Include="Controllers\ConversationController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\EnclosureController.cs" />
     <Compile Include="Controllers\KeeperLogController.cs" />
     <Compile Include="Controllers\ModuleController.cs" />
+    <Compile Include="Controllers\SpeciesController.cs" />
     <Compile Include="Controllers\SubModuleController.cs" />
+    <Compile Include="Controllers\SubSpeciesController.cs" />
     <Compile Include="Controllers\TodoController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">

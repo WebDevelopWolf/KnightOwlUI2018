@@ -35,3 +35,85 @@ a:hover {
     width:100%;
     text-align: right;
 }
+
+select::-ms-expand {
+    display: none;
+}
+
+label.select-box {
+    background-color: #00cf9b;
+    width: 100%;
+    float: left;
+    padding-top: 0;
+    text-align: left;
+    height: 55px;
+    display: block;
+    font-weight: 400;
+    position: relative;
+    border-radius: 2px;
+}
+
+select {
+    background-color: #00cf9b;
+    border-radius: 0px;
+    background-image: url(http://minimalcoding.net/wp-content/uploads/2015/06/icon.png);
+    background-position: top 20px right 10px;
+    background-repeat: no-repeat;
+    display: block;
+    height: 54px;
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    outline: none;
+    letter-spacing: 1px;
+    border: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    line-height: 54px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.ko-input {
+    background: #00cf9b;
+    border-radius: 0px;
+    display: block;
+    height: 54px;
+    width: 100%;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    outline: none;
+    letter-spacing: 1px;
+    border: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    line-height: 54px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.ko-input:focus {
+    outline: none;
+}
+
+.ko-input::placeholder {
+    color: #fff;
+}
+
+.ko-btn {
+    height: 33px;
+    background: #41c862;
+    text-align: center;
+    border: 0;
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    color:#11471e;
+    width: 315px;
+}
+
+.ko-btn:hover {
+    cursor: pointer;
+    color: #FFFFFF;
+    background: #11471e;
+}
